@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Clinic Lab - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="activity" class="h-8 w-8 text-primary-600"></i>
+                        <span class="ml-2 text-2xl font-bold text-primary-700">E-Clinic Lab</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <i data-feather="home" class="mr-2"></i> Site
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-primary-50 to-secondary-50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-extrabold text-gray-900">Admin Dashboard</h1>
+            <p class="mt-2 text-gray-600">Manage bookings and lab tests</p>
+            <div class="mt-4 flex space-x-3">
+                <button id="tab-bookings" class="px-4 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-green-500 to-yellow-400">Booking Management</button>
+                <button id="tab-tests" class="px-4 py-2 rounded-md text-sm font-medium text-gray-700 border border-gray-200 bg-white">Test Management</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Booking Management -->
+            <section id="panel-bookings" class="space-y-6">
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-semibold text-gray-900 flex items-center"><i data-feather="clipboard" class="mr-2 text-green-600"></i> Bookings</h2>
+                        <button id="add-booking" class="inline-flex items-center px-3 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-green-500 to-yellow-400"><i data-feather="plus" class="mr-2"></i>Add Booking</button>
+                    </div>
+                    <div class="mt-4 overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Patient</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="booking-rows" class="bg-white divide-y divide-gray-100"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Test Management -->
+            <section id="panel-tests" class="space-y-6 hidden">
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-semibold text-gray-900 flex items-center"><i data-feather="flask" class="mr-2 text-green-600"></i> Tests</h2>
+                        <button id="add-test" class="inline-flex items-center px-3 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-green-500 to-yellow-400"><i data-feather="plus" class="mr-2"></i>Add Test</button>
+                    </div>
+                    <div class="mt-4 overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="test-rows" class="bg-white divide-y divide-gray-100"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- CRUD Modal -->
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-lg p-6">
+            <h3 id="modal-title" class="text-lg font-semibold text-gray-900">Create</h3>
+            <form id="modal-form" class="mt-4 space-y-3"></form>
+            <div class="mt-6 flex justify-end space-x-3">
+                <button id="modal-cancel" class="px-4 py-2 rounded-md border border-gray-200 text-gray-700">Cancel</button>
+                <button id="modal-submit" class="px-4 py-2 rounded-md text-white bg-gradient-to-r from-green-500 to-yellow-400">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+
+        // Simple in-memory stores
+        const bookings = [
+            { id: 'BK-001', patient: 'Rachel Sunarko', date: '2025-09-23', status: 'Waiting Payment' },
+            { id: 'BK-002', patient: 'John Doe', date: '2025-09-24', status: 'Confirmed' }
+        ];
+        const tests = [
+            { code: 'T-001', name: 'Basic Health Panel', price: 'Rp89.000' },
+            { code: 'T-002', name: 'Complete Metabolic Panel', price: 'Rp129.000' }
+        ];
+
+        const el = (id) => document.getElementById(id);
+        const panelBookings = el('panel-bookings');
+        const panelTests = el('panel-tests');
+        function setActive(tab) {
+            const b = el('tab-bookings');
+            const t = el('tab-tests');
+            if (tab === 'bookings') {
+                b.className = 'px-4 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-green-500 to-yellow-400';
+                t.className = 'px-4 py-2 rounded-md text-sm font-medium text-gray-700 border border-gray-200 bg-white';
+                panelBookings.classList.remove('hidden');
+                panelTests.classList.add('hidden');
+            } else {
+                t.className = 'px-4 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-green-500 to-yellow-400';
+                b.className = 'px-4 py-2 rounded-md text-sm font-medium text-gray-700 border border-gray-200 bg-white';
+                panelTests.classList.remove('hidden');
+                panelBookings.classList.add('hidden');
+            }
+        }
+        el('tab-bookings').addEventListener('click', () => setActive('bookings'));
+        el('tab-tests').addEventListener('click', () => setActive('tests'));
+
+        function render() {
+            // Render bookings
+            const bookingRows = el('booking-rows');
+            bookingRows.innerHTML = bookings.map((b, idx) => `
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${b.id}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${b.patient}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${b.date}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${b.status}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+                        <button data-type="booking" data-idx="${idx}" class="edit px-3 py-1 rounded-md text-white bg-primary-600 hover:bg-primary-700">Edit</button>
+                        <button data-type="booking" data-idx="${idx}" class="delete ml-2 px-3 py-1 rounded-md text-white bg-red-600 hover:bg-red-700">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Render tests
+            const testRows = el('test-rows');
+            testRows.innerHTML = tests.map((t, idx) => `
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${t.code}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${t.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${t.price}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+                        <button data-type="test" data-idx="${idx}" class="edit px-3 py-1 rounded-md text-white bg-primary-600 hover:bg-primary-700">Edit</button>
+                        <button data-type="test" data-idx="${idx}" class="delete ml-2 px-3 py-1 rounded-md text-white bg-red-600 hover:bg-red-700">Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+
+            feather.replace();
+            attachRowHandlers();
+        }
+
+        function attachRowHandlers() {
+            document.querySelectorAll('.edit').forEach(btn => btn.addEventListener('click', openEdit));
+            document.querySelectorAll('.delete').forEach(btn => btn.addEventListener('click', onDelete));
+        }
+
+        function openModal(title, formHtml, onSubmit) {
+            el('modal-title').textContent = title;
+            el('modal-form').innerHTML = formHtml;
+            el('modal').classList.remove('hidden');
+            el('modal-cancel').onclick = () => el('modal').classList.add('hidden');
+            el('modal-submit').onclick = (e) => { e.preventDefault(); onSubmit(); };
+        }
+
+        // Booking CRUD
+        el('add-booking').addEventListener('click', () => {
+            openModal('Add Booking', `
+                <input id="b-id" class="w-full px-3 py-2 border rounded-md" placeholder="ID" />
+                <input id="b-patient" class="w-full px-3 py-2 border rounded-md" placeholder="Patient" />
+                <input id="b-date" type="date" class="w-full px-3 py-2 border rounded-md" />
+                <select id="b-status" class="w-full px-3 py-2 border rounded-md">
+                    <option>Waiting Payment</option>
+                    <option>Confirmed</option>
+                    <option>Completed</option>
+                </select>
+            `, () => {
+                bookings.push({ id: el('b-id').value, patient: el('b-patient').value, date: el('b-date').value, status: el('b-status').value });
+                el('modal').classList.add('hidden');
+                render();
+            });
+        });
+
+        function openEdit(e) {
+            const type = e.currentTarget.getAttribute('data-type');
+            const idx = +e.currentTarget.getAttribute('data-idx');
+            if (type === 'booking') {
+                const b = bookings[idx];
+                openModal('Edit Booking', `
+                    <input id="b-id" class="w-full px-3 py-2 border rounded-md" value="${b.id}" />
+                    <input id="b-patient" class="w-full px-3 py-2 border rounded-md" value="${b.patient}" />
+                    <input id="b-date" type="date" class="w-full px-3 py-2 border rounded-md" value="${b.date}" />
+                    <select id="b-status" class="w-full px-3 py-2 border rounded-md">
+                        <option ${b.status==='Waiting Payment'?'selected':''}>Waiting Payment</option>
+                        <option ${b.status==='Confirmed'?'selected':''}>Confirmed</option>
+                        <option ${b.status==='Completed'?'selected':''}>Completed</option>
+                    </select>
+                `, () => {
+                    bookings[idx] = { id: el('b-id').value, patient: el('b-patient').value, date: el('b-date').value, status: el('b-status').value };
+                    el('modal').classList.add('hidden');
+                    render();
+                });
+            } else {
+                const t = tests[idx];
+                openModal('Edit Test', `
+                    <input id="t-code" class="w-full px-3 py-2 border rounded-md" value="${t.code}" />
+                    <input id="t-name" class="w-full px-3 py-2 border rounded-md" value="${t.name}" />
+                    <input id="t-price" class="w-full px-3 py-2 border rounded-md" value="${t.price}" />
+                `, () => {
+                    tests[idx] = { code: el('t-code').value, name: el('t-name').value, price: el('t-price').value };
+                    el('modal').classList.add('hidden');
+                    render();
+                });
+            }
+        }
+
+        function onDelete(e) {
+            const type = e.currentTarget.getAttribute('data-type');
+            const idx = +e.currentTarget.getAttribute('data-idx');
+            if (type === 'booking') bookings.splice(idx, 1); else tests.splice(idx, 1);
+            render();
+        }
+
+        // Test CRUD
+        el('add-test').addEventListener('click', () => {
+            openModal('Add Test', `
+                <input id="t-code" class="w-full px-3 py-2 border rounded-md" placeholder="Code" />
+                <input id="t-name" class="w-full px-3 py-2 border rounded-md" placeholder="Name" />
+                <input id="t-price" class="w-full px-3 py-2 border rounded-md" placeholder="Price (e.g., Rp89.000)" />
+            `, () => {
+                tests.push({ code: el('t-code').value, name: el('t-name').value, price: el('t-price').value });
+                el('modal').classList.add('hidden');
+                render();
+            });
+        });
+
+        // initial render
+        render();
+    </script>
+</body>
+</html>
+
+

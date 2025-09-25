@@ -101,10 +101,10 @@
                             <i data-feather="arrow-left" class="mr-2"></i> Back to Tests
                         </a>
                         <div class="space-x-3">
-                            <button class="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium text-white bg-primary-600 hover:bg-primary-700">
-                                <i data-feather="download" class="mr-2"></i> Download PDF
+                            <button id="download-result" class="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-green-500 to-yellow-400 hover:from-green-600 hover:to-yellow-500">
+                                <i data-feather="download" class="mr-2"></i> Download Result
                             </button>
-                            <button class="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-green-500 to-yellow-400 hover:from-green-600 hover:to-yellow-500">
+                            <button class="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium text-white bg-primary-600 hover:bg-primary-700">
                                 <i data-feather="share-2" class="mr-2"></i> Share
                             </button>
                         </div>
@@ -128,7 +128,24 @@
     <script>
         AOS.init();
         feather.replace();
+        // Simple download as PDF via browser print dialog
+        (function() {
+            var btn = document.getElementById('download-result');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    window.print();
+                });
+            }
+        })();
     </script>
+
+    <style>
+        @media print {
+            nav, footer, #download-result, .bg-primary-600, .bg-gradient-to-r { display: none !important; }
+            body { background: white !important; }
+            .shadow-sm, .shadow, .shadow-lg { box-shadow: none !important; }
+        }
+    </style>
 </body>
 </html>
 
