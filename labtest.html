@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthLab - Book Lab Tests</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .promo-banner {
+            background: linear-gradient(135deg, rgba(34,197,94,0.8) 0%, rgba(234,179,8,0.8) 100%);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="activity" class="h-8 w-8 text-primary-600"></i>
+                        <span class="ml-2 text-xl font-bold text-primary-700">HealthLab</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <i data-feather="home" class="mr-2"></i> Home
+                    </a>
+                    <a href="labtest.html" class="border-primary-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <i data-feather="flask" class="mr-2"></i> Lab Test
+                    </a>
+                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <i data-feather="shopping-bag" class="mr-2"></i> My Order
+                    </a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <button class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center">
+                        <i data-feather="user" class="mr-2"></i> Sign In
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-primary-50 to-secondary-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    <span class="block">Book Your Lab Tests</span>
+                </h1>
+                <p class="mt-3 max-w-md mx-auto text-base text-gray-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                    Comprehensive testing options with fast, accurate results
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search and Referral Section -->
+    <div class="bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                <!-- Search Bar -->
+                <div class="md:col-span-2">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-feather="search" class="h-5 w-5 text-gray-400"></i>
+                        </div>
+                        <input type="text" class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm" placeholder="Search lab tests...">
+                    </div>
+                </div>
+                
+                <!-- Referral Section -->
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="text-sm font-medium text-gray-700">Have a referral code?</h3>
+                        <div class="mt-2 flex">
+                            <input type="text" class="flex-1 min-w-0 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm" placeholder="Enter code">
+                            <button class="ml-2 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700">
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+                    <button class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-secondary-600 hover:bg-secondary-700">
+                        <i data-feather="message-square" class="mr-2"></i> Need a doctor referral?
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Catalog -->
+    <div class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-900">Recommended For You</h2>
+                <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Test Card 1 -->
+                    <div class="test-card bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-primary-100 rounded-md p-3">
+                                    <i data-feather="heart" class="h-6 w-6 text-primary-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Basic Health Panel</h3>
+                                    <p class="mt-1 text-sm text-gray-500">12 tests included</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex items-baseline">
+                                <span class="text-2xl font-extrabold text-gray-900">$89</span>
+                                <span class="ml-2 text-sm font-medium text-gray-500 line-through">$120</span>
+                                <span class="ml-auto inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    25% off
+                                </span>
+                            </div>
+                            <button class="mt-6 w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Test Card 2 -->
+                    <div class="test-card bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-primary-100 rounded-md p-3">
+                                    <i data-feather="activity" class="h-6 w-6 text-primary-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Complete Metabolic Panel</h3>
+                                    <p class="mt-1 text-sm text-gray-500">20 tests included</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex items-baseline">
+                                <span class="text-2xl font-extrabold text-gray-900">$129</span>
+                                <span class="ml-2 text-sm font-medium text-gray-500 line-through">$180</span>
+                                <span class="ml-auto inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    28% off
+                                </span>
+                            </div>
+                            <button class="mt-6 w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Test Card 3 -->
+                    <div class="test-card bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-primary-100 rounded-md p-3">
+                                    <i data-feather="shield" class="h-6 w-6 text-primary-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Immunity Checkup</h3>
+                                    <p class="mt-1 text-sm text-gray-500">8 tests included</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex items-baseline">
+                                <span class="text-2xl font-extrabold text-gray-900">$75</span>
+                                <span class="ml-2 text-sm font-medium text-gray-500 line-through">$100</span>
+                                <span class="ml-auto inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    25% off
+                                </span>
+                            </div>
+                            <button class="mt-6 w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promotional Banner -->
+            <div class="mt-12">
+                <div class="promo-banner rounded-xl p-8 text-white">
+                    <div class="md:flex md:items-center md:justify-between">
+                        <div class="flex-1 min-w-0">
+                            <h2 class="text-2xl font-bold leading-7 sm:text-3xl sm:truncate">
+                                Summer Health Special
+                            </h2>
+                            <p class="mt-3 text-lg">
+                                Get 30% off on all comprehensive health packages this month!
+                            </p>
+                        </div>
+                        <div class="mt-4 flex md:mt-0 md:ml-4">
+                            <button class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-primary-700 bg-white hover:bg-gray-50">
+                                View All Promotions
+                                <i data-feather="arrow-right" class="ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All Tests Section -->
+            <div class="mt-12">
+                <h2 class="text-2xl font-bold text-gray-900">All Available Tests</h2>
+                <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- Additional test cards would go here -->
+                    <!-- Test Card 4 -->
+                    <div class="test-card bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-primary-100 rounded-md p-3">
+                                    <i data-feather="droplet" class="h-6 w-6 text-primary-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Cholesterol Panel</h3>
+                                    <p class="mt-1 text-sm text-gray-500">4 tests included</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex items-baseline">
+                                <span class="text-2xl font-extrabold text-gray-900">$45</span>
+                                <span class="ml-2 text-sm font-medium text-gray-500 line-through">$60</span>
+                            </div>
+                            <button class="mt-6 w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Test Card 5 -->
+                    <div class="test-card bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-primary-100 rounded-md p-3">
+                                    <i data-feather="thermometer" class="h-6 w-6 text-primary-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Thyroid Panel</h3>
+                                    <p class="mt-1 text-sm text-gray-500">3 tests included</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex items-baseline">
+                                <span class="text-2xl font-extrabold text-gray-900">$65</span>
+                                <span class="ml-2 text-sm font-medium text-gray-500 line-through">$85</span>
+                            </div>
+                            <button class="mt-6 w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Test Card 6 -->
+                    <div class="test-card bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-primary-100 rounded-md p-3">
+                                    <i data-feather="zap" class="h-6 w-6 text-primary-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Energy & Vitality</h3>
+                                    <p class="mt-1 text-sm text-gray-500">6 tests included</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex items-baseline">
+                                <span class="text-2xl font-extrabold text-gray-900">$95</span>
+                                <span class="ml-2 text-sm font-medium text-gray-500 line-through">$120</span>
+                            </div>
+                            <button class="mt-6 w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Test Card 7 -->
+                    <div class="test-card bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-primary-100 rounded-md p-3">
+                                    <i data-feather="eye" class="h-6 w-6 text-primary-600"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Vision Health</h3>
+                                    <p class="mt-1 text-sm text-gray-500">5 tests included</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex items-baseline">
+                                <span class="text-2xl font-extrabold text-gray-900">$55</span>
+                                <span class="ml-2 text-sm font-medium text-gray-500 line-through">$75</span>
+                            </div>
+                            <button class="mt-6 w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Services</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-500 hover:text-primary-600">Lab Tests</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-primary-600">Health Packages</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-primary-600">Home Collection</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-500 hover:text-primary-600">About Us</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-primary-600">Careers</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-primary-600">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-500 hover:text-primary-600">Privacy</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-primary-600">Terms</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-primary-600">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Connect</h3>
+                    <div class="mt-4 flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-primary-600">
+                            <i data-feather="facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-600">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-600">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-600">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-200 pt-8">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; 2023 HealthLab. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init();
+        feather.replace();
+    </script>
+</body>
+</html>
