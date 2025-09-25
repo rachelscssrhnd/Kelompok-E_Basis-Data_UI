@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Clinic Lab - Booking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="activity" class="h-8 w-8 text-primary-600"></i>
+                        <span class="ml-2 text-2xl font-bold text-primary-700">E-Clinic Lab</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <i data-feather="home" class="mr-2"></i> Home
+                    </a>
+                    <a href="labtest.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <i data-feather="flask" class="mr-2"></i> Lab Test
+                    </a>
+                    <a href="myorder.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <i data-feather="shopping-bag" class="mr-2"></i> My Order
+                    </a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="auth.html" class="text-white px-4 py-2 rounded-md text-sm font-medium flex items-center bg-gradient-to-r from-green-500 to-yellow-400 hover:from-green-600 hover:to-yellow-500">
+                        <i data-feather="user" class="mr-2"></i> Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-primary-50 to-secondary-50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-extrabold text-gray-900">Book Your Test</h1>
+            <p class="mt-2 text-gray-600">Review details, set your schedule, and choose payment</p>
+        </div>
+    </div>
+
+    <!-- Booking Content -->
+    <div class="bg-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left: Details -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Order Detail -->
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-semibold text-gray-900 flex items-center"><i data-feather="file-text" class="mr-2 text-green-600"></i> Order Details</h2>
+                        <a href="labtest.html" class="inline-flex items-center px-3 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-green-500 to-yellow-400 hover:from-green-600 hover:to-yellow-500"><i data-feather="plus" class="mr-2"></i>Add Test</a>
+                    </div>
+                    <div class="mt-4 divide-y divide-gray-100">
+                        <div class="py-4 flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-primary-100 rounded-md p-3"><i data-feather="heart" class="h-5 w-5 text-primary-600"></i></div>
+                                <div class="ml-4">
+                                    <p class="font-medium text-gray-900">Basic Health Panel</p>
+                                    <p class="text-sm text-gray-500">12 tests included</p>
+                                </div>
+                            </div>
+                            <p class="font-semibold text-gray-900">Rp89.000</p>
+                        </div>
+                        <div class="py-4 flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-primary-100 rounded-md p-3"><i data-feather="activity" class="h-5 w-5 text-primary-600"></i></div>
+                                <div class="ml-4">
+                                    <p class="font-medium text-gray-900">Complete Metabolic Panel</p>
+                                    <p class="text-sm text-gray-500">20 tests included</p>
+                                </div>
+                            </div>
+                            <p class="font-semibold text-gray-900">Rp129.000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule -->
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 flex items-center"><i data-feather="calendar" class="mr-2 text-green-600"></i> Set Schedule</h2>
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Date</label>
+                            <input type="date" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Time</label>
+                            <input type="time" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700">Visit Type</label>
+                            <select class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
+                                <option>Visit Branch</option>
+                                <option>Home Collection</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Details -->
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 flex items-center"><i data-feather="list" class="mr-2 text-green-600"></i> Payment Details</h2>
+                    <dl class="mt-4 space-y-2 text-sm text-gray-700">
+                        <div class="flex justify-between"><dt>Subtotal</dt><dd class="font-medium">Rp218.000</dd></div>
+                        <div class="flex justify-between"><dt>Discount</dt><dd class="font-medium text-green-700">- Rp30.000</dd></div>
+                        <div class="flex justify-between"><dt>Service Fee</dt><dd class="font-medium">Rp5.000</dd></div>
+                        <div class="flex justify-between border-t pt-2 text-base font-semibold text-gray-900"><dt>Total</dt><dd>Rp193.000</dd></div>
+                    </dl>
+                </div>
+            </div>
+
+            <!-- Right: Payment Options -->
+            <div class="space-y-6">
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 flex items-center"><i data-feather="credit-card" class="mr-2 text-green-600"></i> Payment Options</h2>
+                    <div class="mt-4 space-y-3">
+                        <label class="flex items-center justify-between p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <div class="flex items-center">
+                                <input name="payment" type="radio" class="h-4 w-4 text-primary-600">
+                                <span class="ml-3 text-sm text-gray-800">Credit/Debit Card</span>
+                            </div>
+                            <i data-feather="credit-card" class="text-gray-400"></i>
+                        </label>
+                        <label class="flex items-center justify-between p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <div class="flex items-center">
+                                <input name="payment" type="radio" class="h-4 w-4 text-primary-600">
+                                <span class="ml-3 text-sm text-gray-800">Bank Transfer</span>
+                            </div>
+                            <i data-feather="repeat" class="text-gray-400"></i>
+                        </label>
+                        <label class="flex items-center justify-between p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <div class="flex items-center">
+                                <input name="payment" type="radio" class="h-4 w-4 text-primary-600">
+                                <span class="ml-3 text-sm text-gray-800">E-Wallet</span>
+                            </div>
+                            <i data-feather="smartphone" class="text-gray-400"></i>
+                        </label>
+                    </div>
+                    <a href="myorder.html" class="mt-6 w-full inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-green-500 to-yellow-400 hover:from-green-600 hover:to-yellow-500">
+                        <i data-feather="check-circle" class="mr-2"></i> Book Now
+                    </a>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 flex items-center"><i data-feather="info" class="mr-2 text-green-600"></i> Summary</h2>
+                    <p class="mt-2 text-sm text-gray-600">By proceeding, you agree to our terms and conditions. You will receive a confirmation email with your booking details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="mt-12 border-t border-gray-200 pt-8">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; 2025 E-Clinic Lab. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init();
+        feather.replace();
+    </script>
+</body>
+</html>
+
+
